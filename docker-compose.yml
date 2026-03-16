@@ -1,0 +1,43 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=password
+      - GENERIC_TIMEZONE=Europe/Paris
+      - TZ=Europe/Paris
+    volumes:
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+
+  postgres:
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_USER=skinadvisor
+      - POSTGRES_PASSWORD=skinadvisor123
+      - POSTGRES_DB=skinadvisor_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  n8n_data:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge

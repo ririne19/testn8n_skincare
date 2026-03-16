@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skin Advisor · IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="app">
+
+    <!-- ══ SIDEBAR ══════════════════════════════ -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-mark">✦</span>
+        <span class="logo-text">Skin<em>Advisor</em></span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <p class="nav-label">Votre session</p>
+        <div class="session-card">
+          <span class="session-id" id="sessionIdDisplay">—</span>
+          <span class="session-status" id="sessionStatus">En attente de photo</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-info">
+        <p class="nav-label">Comment ça marche</p>
+        <ol class="steps-list">
+          <li>Envoyez une photo de votre peau</li>
+          <li>L'IA analyse votre type de peau</li>
+          <li>Recevez une routine personnalisée</li>
+          <li>Affinez selon vos allergies & budget</li>
+        </ol>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="resetBtn" class="btn-reset">↺ Nouvelle session</button>
+      </div>
+    </aside>
+
+    <!-- ══ CHAT MAIN ═════════════════════════════ -->
+    <main class="chat-main">
+
+      <!-- Header -->
+      <header class="chat-header">
+        <h1>Analyse cutanée</h1>
+        <div class="header-badge">
+          <span class="badge-dot"></span>
+          <span>IA active</span>
+        </div>
+      </header>
+
+      <!-- Messages -->
+      <section class="chat-messages" id="chatMessages">
+        <!-- Les messages sont injectés par JS -->
+      </section>
+
+      <!-- Zone upload (visible au départ) -->
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" hidden />
+        <div class="upload-zone-inner" id="uploadZoneInner">
+          <div class="upload-icon">◎</div>
+          <p class="upload-title">Déposer votre photo ici</p>
+          <p class="upload-sub">jpg · png · webp · max 5 Mo</p>
+          <button class="btn-upload" id="uploadBtn">Choisir une photo</button>
+        </div>
+      </div>
+
+      <!-- Input bar -->
+      <footer class="chat-footer">
+        <!-- Suggestions rapides -->
+        <div class="suggestions" id="suggestions"></div>
+
+        <div class="input-bar">
+          <!-- Bouton photo inline (après premier upload) -->
+          <button class="btn-icon" id="inlineUploadBtn" title="Changer de photo" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </button>
+
+          <input
+            type="text"
+            id="textInput"
+            placeholder="Écrivez votre message…"
+            autocomplete="off"
+            disabled
+          />
+
+          <button class="btn-send" id="sendBtn" disabled>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22 2L11 13M22 2L15 22 11 13 2 9 22 2z"/>
+            </svg>
+          </button>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
