@@ -9,7 +9,9 @@ const CONFIG = {
   // À modifier quand tu branches N8N
   //WEBHOOK_URL: "http://localhost:5678/webhook/skincare-chat",
   //Webhook railway
-  WEBHOOK_URL: "https://n8n-production-3334.up.railway.app/webhook/26aa0b50-21c5-4923-8a1b-83fd83ae9170",
+  //WEBHOOK_URL: "https://n8n-production-3334.up.railway.app/webhook/26aa0b50-21c5-4923-8a1b-83fd83ae9170",
+  // connexion avec variable de vercel
+  WEBHOOK_URL: process.env.N8N_WEBHOOK_URL || "http://localhost:5678/webhook/skincare-reconstruction",
   MAX_FILE_SIZE_MB: 5,
   // Pour l'instant on simule les réponses (mode démo)
   DEMO_MODE: false,
